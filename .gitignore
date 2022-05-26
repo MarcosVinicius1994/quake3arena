@@ -14,3 +14,12 @@ test_gen
 test_gen.caches
 TEST-*.xml
 junit*.properties
+.idea/
+.vscode/
+package-lock.json
+node_modules/
+temp/
+.env
+coverage
+.env.dev
+.gitmessage.txt
