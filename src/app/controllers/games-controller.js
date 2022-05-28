@@ -1,4 +1,4 @@
-const { loadGamesService} = require('../services/game-service')
+const { loadGamesService} = require('../services/games-service')
 
 
 module.exports = {
@@ -11,7 +11,10 @@ module.exports = {
                statusCode: 200
            }
         } catch (error) {
-            console.log(error)
+           return {
+               statusCode: 500,
+               body: error.message
+           }
         }
     }
 }
