@@ -38,9 +38,9 @@ Documentação referente ao projeto de  desenvolvimento do parser para o game Qu
 1 - Desenvolvimento baseado na criação de objetos representando o game, os jogadores e o parser que é um conjunto de games. Em termos gerais temos:
 
 
-1 parser que pode conter 1 a N Games
-N games podem conter N jogadores
-1 jogador pode estar contido em N games
+1 parser que pode conter 1 a N Games;
+N games podem conter N jogadores;
+1 jogador pode estar contido em N games;
 
 
 
