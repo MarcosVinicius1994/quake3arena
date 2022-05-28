@@ -1,7 +1,7 @@
 const { Router } = require('express')
 
 const pjson = require('../../../../package.json')
-const gameRouter = require('../../../app/routes/game-router')
+const gameRouter = require('../../../app/routes/games-router')
 const routes = Router()
 
 routes.get('/api/health', (req, res) => {
@@ -19,7 +19,7 @@ routes.get('/api/health', (req, res) => {
 
 
 routes.get('/', (req, res) => {
-    return res.json({ message: 'Olá serviço de busca dos logs do game Quake Arena 3' })
+    return res.json({ message: 'Olá serviço de busca dos logs do game' })
 })
 
 
