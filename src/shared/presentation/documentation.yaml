@@ -1,0 +1,62 @@
+swagger: "2.0"
+info:
+  description: "Esta é a documentação do serviço parser para Quake Arena 3 [https://github.com/MarcosVinicius1994/quake3arena.git]"
+  version: "1.0.0"
+  title: "Swagger QuakeArena 3"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "apiteam@swagger.io"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+basePath: "/v1"
+tags:
+schemes:
+- "https"
+- "http"
+paths:
+  /result:
+    get:
+      tags:
+      - "pet"
+      summary: "Busca todos os resultados dos jogos"
+      description: "Busca todos os resultados dos jogos"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: "array"
+        "400":
+          description: "Invalid status value"
+      security:
+      - petstore_auth:
+        - "write:pets"
+        - "read:pets"
+  /result/{idGame}:
+    get:
+      tags:
+      - "pet"
+      summary: "Busca os games por ID"
+      description: "Retorna os games por ID"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "idGame"
+        in: "Query"
+        description: "ID do game"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+        "400":
+          description: "Id invalido"
+        "404":
+          description: "game não existe"
+      security:
+      - api_key: []
+ 

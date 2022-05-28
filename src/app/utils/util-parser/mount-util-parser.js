@@ -5,7 +5,7 @@ module.exports = {
     async mountObject(Parser) {
         try {
             let result = {}
-            Parser.games.forEach(async (item, index) => {
+           Parser.games.forEach(async (item, index) => {
                 result[`game_${parseInt(index)}`] = {
                     total_kills: item.total_kills,
                     players: await playersNames(item),

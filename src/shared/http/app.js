@@ -13,10 +13,21 @@ const httpContext = require('express-http-context')
 const { v4: uuidv4 } = require('uuid')
 const { errors } = require('celebrate')
 
+const swaggerUi = require('swagger-ui-express')
+const fs = require('fs')
+const yaml = require('js-yaml')
+
 const routes = require('./routes')
 
 
 const app = express()
+
+const fileContexts = fs.readFileSync(
+    `${__dirname}/../../../src/shared/presentation/documentation.yaml`,
+    'utf8'
+)
+
+const data = yaml.load(fileContexts)
 
 app.use(httpContext.middleware)
 app.use(express.json())
@@ -26,10 +37,11 @@ app.use((req, res, next) => {
 })
 
 app.use(routes)
+app.use('/api/docs', swaggerUi.serve, swaggerUi.setup(data))
 app.use(errors)
 app.use((error, req, res, next) =>{
     if (error) {
-        return res.status(error.statusCode).json({
+        return res.status(error.status || 500).json({
             status: 'error',
             message: error.message,
         })
