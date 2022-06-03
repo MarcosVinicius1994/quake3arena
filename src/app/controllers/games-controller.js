@@ -1,5 +1,4 @@
-const { loadGamesService} = require('../services/games-service')
-const { loadGameIdService} = require('../services/games-service')
+const { loadGamesService, loadGameIdService } = require('../services/games-service')
 
 
 
