@@ -5,13 +5,17 @@ module.exports = {
     async mountObject(Parser) {
         try {
             let result = {}
-           Parser.games.forEach(async (item, index) => {
-                result[`game_${parseInt(index)}`] = {
-                    total_kills: item.total_kills,
-                    players: await playersNames(item),
-                    kills: await playersKills(item)
-                }
-            })
+            const games = Parser.games
+            const promises = []
+            for (let i =1 ; i < games.size; i++) {
+                promises.push(
+                    result[`game_${parseInt(i)}`] = {
+                    total_kills: await games.get(i).total_kills,
+                    players: await playersNames(games.get(i)),
+                    kills:  await playersKills(games.get(i))
+                })
+            }
+            Promise.all(promises)
             return result
         } catch (error) {
             throw new Error('Error while amounting final object parser: ' + error.message)
